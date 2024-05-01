@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Trend Graph</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; 
+            margin: 0;
+            padding: 0;
+        }
+
+        #plot-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff; 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333; 
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        
+        .plotly .cartesianlayer .grids path {
+            stroke: #007bff; 
+            stroke-width: 2px; 
+        }
+
+        .plotly .scatterlayer .trace {
+            stroke: #28a745; 
+            stroke-width: 2px; 
+        }
+
+        .buy-now-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #007bff; 
+            color: #fff; 
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-now-button:hover {
+            background-color: #0056b3; 
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="email"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="plot-container">
+        <h1>Price Trend Graph</h1>
+        {{ plot_html | safe }}
+        <a class="buy-now-button" href="{{ product_url }}" target="_blank">Buy Now</a>
+        <form action="https://formspree.io/f/xrgwrovo" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="number" name="price_threshold" placeholder="Enter price threshold" required>
+            <input type="text" name="product_name" placeholder="Enter product name" required>
+            <button type="submit">Set Price Alert</button>
+        </form>
+    </div>
+</body>
+
+
+</body>
+</html>
